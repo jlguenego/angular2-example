@@ -5,3 +5,8 @@ import '@angular/common';
 
 // RxJS
 import 'rxjs';
+
+
+// CSS
+import 'font-awesome/css/font-awesome.css';
+import '../common/styles.scss';
