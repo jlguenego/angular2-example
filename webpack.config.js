@@ -1,13 +1,26 @@
 const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const fs = require('fs');
 
-module.exports = {
+
+let list = [];
+const files = fs.readdirSync('./src');
+
+files.forEach(file => {
+	console.log(file);
+	if (file.match(/^\d\d.*$/) && fs.lstatSync('./src/' + file).isDirectory()) {
+		list.push(file);
+	};
+});
+console.log('list', list);
+
+
+
+let config = {
 	entry: {
 		polyfills: './src/common/polyfills.ts',
-		vendor: './src/common/vendor.ts',
-		'01_helloworld': './src/01_helloworld/main.ts',
-		'02_list': './src/02_list/main.ts',
+		vendor: './src/common/vendor.ts'
 	},
 	output: {
 		filename: '[name].js',
@@ -87,9 +100,9 @@ module.exports = {
 	},
 	//devtool: 'source-map',
 	plugins: [
-		new ExtractTextPlugin({filename: '[name].css', ignoreOrder: true}),
-		new webpack.optimize.CommonsChunkPlugin({
-			name: ['01_helloworld', '02_list', 'vendor', 'polyfills']
+		new ExtractTextPlugin({
+			filename: '[name].css',
+			ignoreOrder: true
 		}),
 		// to avoid useless warning, we need a context replacement plugin.
 		// see https://github.com/angular/angular/issues/11580
@@ -99,3 +112,14 @@ module.exports = {
 		)
 	]
 }
+
+for (name of list) {
+	config.entry[name] = `./src/${name}/main.ts`;
+}
+list.push('vendor', 'polyfills');
+console.log('list', list);
+config.plugins.push(new webpack.optimize.CommonsChunkPlugin({
+	names: list
+}));
+
+module.exports = config;
