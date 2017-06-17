@@ -14,3 +14,16 @@ h1 {
   font-size: 250%;
 }
 
+ul>li {
+  display: block;
+  width: 200px;
+  margin: 20px;
+  padding: 20px;
+  background-color: hsl(0, 0%, 90%);
+  border-radius: 5px;
+  cursor: pointer;
+  &:hover {
+    background-color: hsl(0, 0%, 80%);
+  }
+}
+
