@@ -45,5 +45,11 @@ module.exports = {
 		new webpack.optimize.CommonsChunkPlugin({
 			name: ['bundle', 'vendor', 'polyfills']
 		}),
+		// to avoid useless warning, we need a context replacement plugin.
+		// see https://github.com/angular/angular/issues/11580
+		new webpack.ContextReplacementPlugin(
+			/angular(\\|\/)core(\\|\/)@angular/,
+			path.resolve(__dirname, '../src')
+		)
 	]
 }
