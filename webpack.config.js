@@ -4,9 +4,9 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
 	entry: {
-		polyfills: './src/polyfills.ts',
-		vendor: './src/vendor.ts',
-		bundle: './src/main.ts'
+		polyfills: './src/common/polyfills.ts',
+		vendor: './src/common/vendor.ts',
+		'01_helloworld': './src/01_helloworld/main.ts'
 	},
 	output: {
 		filename: '[name].js',
@@ -22,7 +22,7 @@ module.exports = {
 			use: [{
 				loader: 'awesome-typescript-loader',
 				options: {
-					configFileName: path.resolve(__dirname, './src/tsconfig.json')
+					configFileName: path.resolve(__dirname, './tsconfig.json')
 				}
 			}]
 		}, {
@@ -43,7 +43,7 @@ module.exports = {
 	plugins: [
 		new ExtractTextPlugin('[name].css'),
 		new webpack.optimize.CommonsChunkPlugin({
-			name: ['bundle', 'vendor', 'polyfills']
+			name: ['01_helloworld', 'vendor', 'polyfills']
 		}),
 		// to avoid useless warning, we need a context replacement plugin.
 		// see https://github.com/angular/angular/issues/11580
