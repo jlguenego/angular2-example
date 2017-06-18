@@ -25,6 +25,7 @@ export class AppComponent {
     } else {
       this.selectedColor.splice(index, 1);
     }
+    this.imgUrl = color.image;
   }
 
   public getClass(color: IPair) {
