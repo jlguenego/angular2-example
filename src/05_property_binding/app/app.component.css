@@ -1,0 +1,11 @@
+.selected {
+  font-weight: bold;
+}
+
+input {
+  width: 400px;
+}
+
+img {
+  height: 400px;
+}

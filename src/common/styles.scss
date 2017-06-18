@@ -1,5 +1,4 @@
 $myColor: hsl(240, 100%, 30%);
-
 loading {
   display: block;
   position: fixed;
@@ -14,16 +13,19 @@ h1 {
   font-size: 250%;
 }
 
-ul>li {
-  display: block;
-  width: 200px;
-  margin: 20px;
-  padding: 20px;
-  background-color: hsl(0, 0%, 90%);
-  border-radius: 5px;
-  cursor: pointer;
-  &:hover {
-    background-color: hsl(0, 0%, 80%);
+ul.colors {
+  margin: 10px 0px;
+  padding: 0px;
+  li {
+    display: block;
+    width: 150px;
+    margin: 10px 0px;
+    padding: 10px;
+    background-color: hsl(0, 0%, 90%);
+    border-radius: 5px;
+    cursor: pointer;
+    &:hover {
+      background-color: hsl(0, 0%, 80%);
+    }
   }
 }
-
