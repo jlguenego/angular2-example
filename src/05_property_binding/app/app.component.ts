@@ -13,7 +13,7 @@ export class AppComponent {
   private selectedColor: IPair[] = [];
 
   @Input()
-  public imgUrl = '';
+  public imgUrl = 'http://2ality.com/2011/10/logo-js/js.jpg';
   constructor(private colorService: ColorService) {
     this.colors = colorService.getColors();
 

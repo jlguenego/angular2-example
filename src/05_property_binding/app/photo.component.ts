@@ -15,5 +15,5 @@ import { Component, Input } from '@angular/core';
 })
 export class PhotoComponent {
   @Input()
-  public image: string = '';
+  public image: string;
 }
